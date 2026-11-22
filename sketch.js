@@ -19,8 +19,8 @@ function setup() {
 }
 
 function draw() {
-  background(255);
-
+  background(245, 244, 238);
+  
   // little dye where the mouse moves
   if (mouseIsPressed) {
     let mi = floor(mouseX / cellSize);
@@ -64,10 +64,11 @@ function draw() {
   noStroke();
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
-      let shade = constrain(cells[i][j].d * 255, 0, 255);
-      fill(30, 90, 180, shade);
+      let d = constrain(cells[i][j].d, 0, 1);
+      let alpha = pow(d, 0.75) * 255;
+      fill(16, 36, 110, alpha);
       rect(i * cellSize, j * cellSize, cellSize, cellSize);
-    }
+  }
   }
 }
 
